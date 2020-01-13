@@ -2,6 +2,32 @@
 import '../styles/main.scss';
 import "babel-polyfill";
 
+var form = document.querySelector("form")
+var name = document.querySelector("#name")
+var email = document.querySelector("#email")
+var password = document.querySelector("#password")
+var submit = document.querySelector(".btn")
+var check = document.querySelector("#checkbox")
 
-// \/ All of your javascript should go here \/
+    
 
+
+
+form.addEventListener("submit", async function(e, url='http://jsonplaceholder.typicode.com/posts'){
+         e.preventDefault()
+         var formData = [name.value ,email.value, password.value,check.checked]
+   const response= await fetch(url,{
+        method:'Post',
+        body:JSON.stringify(formData),
+        headers:{
+            "Content-type":"application/json;charset=UTF-8"
+        }
+
+    })
+
+    .then(response=>response.json())
+    .then(json=>console.log(json))
+
+})
+
+   
