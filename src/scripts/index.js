@@ -10,11 +10,12 @@ var submit = document.querySelector(".btn")
 var check = document.querySelector("#checkbox")
 
     
-
+//alert("thank  your for submitting your details! ")
 
 
 form.addEventListener("submit", async function(e, url='http://jsonplaceholder.typicode.com/posts'){
          e.preventDefault()
+        
          var formData = [name.value ,email.value, password.value,check.checked]
    const response= await fetch(url,{
         method:'Post',
@@ -22,12 +23,16 @@ form.addEventListener("submit", async function(e, url='http://jsonplaceholder.ty
         headers:{
             "Content-type":"application/json;charset=UTF-8"
         }
+        
 
     })
 
     .then(response=>response.json())
-    .then(json=>console.log(json))
+    .then(json=>{console.log(json)
+    
+        alert("thanks  for your submitting your details! \n user id:"+json.id) })
+
+
 
 })
 
-   
